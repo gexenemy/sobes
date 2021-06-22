@@ -7,6 +7,7 @@ export class Main {
         const oddNumbers: number[] = array.filter((n: number) => n % 2 !== 0).sort((a, b) => a - b);
         console.log(array.entries())
         console.log(oddNumbers)
+        console.log(oddNumbers)
         // Return a sorted array.
     }
 
