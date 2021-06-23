@@ -1,14 +1,15 @@
 export class Main {
     constructor() {
-        this.sortArray([5, 8, 1, 6, 3, 4])
+        this.solution("apples !applesauce plums % and bananas\npears oranges !applesauce", ["%", "!"])
+    }
+
+    private solution(input: string, markers: string[]) {
+        console.log(input.replace(/((\w|\s)(!)(\w|\s)+)/g, ''))
     }
 
     private sortArray(array: number[]) {
         const oddNumbers: number[] = array.filter((n: number) => n % 2 !== 0).sort((a, b) => a - b);
-        console.log(array.entries())
-        console.log(oddNumbers)
-        console.log(oddNumbers)
-        // Return a sorted array.
+        return array.map((n: number) => n % 2 !== 0 ? oddNumbers.shift() : n);
     }
 
     private songDecoder(string: string) {
