@@ -1,6 +1,29 @@
 export class Main {
     constructor() {
-        this.solution("apples !applesauce plums % and bananas\npears oranges !applesauce", ["%", "!"])
+        // this.solution("apples !applesauce plums % and bananas\npears oranges !applesauce", ["%", "!"])
+        this.isSatorSquare([
+            ['P', 'E', 'R'],
+            ['E', 'V', 'E'],
+            ['R', 'E', 'P']
+        ]);
+    }
+
+    private isSatorSquare(tablet: string[][]) {
+
+
+    }
+
+    private sumPairs(ints: number[], s: number) {
+        ints.reduce((t, c, i, a) => {
+            console.log(t, c)
+            return t
+        }, [])
+        console.log()
+        return [0, 0] || undefined;
+    }
+
+    private overTheRoad(address: number, n: number) {
+        console.log((n * 2) - address + 1)
     }
 
     private solution(input: string, markers: string[]) {
