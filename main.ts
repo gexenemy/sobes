@@ -1,16 +1,42 @@
 export class Main {
     constructor() {
         // this.solution("apples !applesauce plums % and bananas\npears oranges !applesauce", ["%", "!"])
-        this.isSatorSquare([
-            ['P', 'E', 'R'],
-            ['E', 'V', 'E'],
-            ['R', 'E', 'P']
-        ]);
+        // 1   1
+        // 2   2
+        // 4   6 / 3 = 2 ... -2
+        // 8   20 / 4 = 5 ... -3
+        // 16   70 / 5 = 14 ... -2
+        // 32   252 / 6 = 42
+        // 64   924 / 7 = 132
+        // 128   3432 / 8 = 429
+
+        this.easyLine(2)
+        this.easyLine(3)
+        this.easyLine(4)
+        this.easyLine(5)
+        this.easyLine(6)
+        this.easyLine(7)
+        this.easyLine(8)
+    }
+
+    private easyLine(n: number) {
+        const factorial: any = (num: any) => num ? num * factorial(num - 1) : 1;
+        let result: number[] = [];
+        for (let i = 0; i <= n; i++) {
+            result.push(factorial(n) / (factorial(i) * factorial(n - i)))
+        }
+        console.log((result.reduce((t, c) => t + (c ** 2), 0)))
     }
 
     private isSatorSquare(tablet: string[][]) {
-
-
+        const hor = tablet.flat().join('');
+        const horR = tablet.flat().reverse().join('');
+        const vert = tablet.reduce((t, c, i, a) => {
+            a.forEach((v) => t.push(v[i]))
+            return t
+        }, []);
+        const vertR = vert.reverse().join('');
+        return [hor, horR, vert.join(''), vertR].every((d) => d === hor);
     }
 
     private sumPairs(ints: number[], s: number) {
@@ -20,6 +46,12 @@ export class Main {
         }, [])
         console.log()
         return [0, 0] || undefined;
+    }
+
+    private findSquares(num: number) {
+        const max = Math.pow((num + 1) / 2, 2);
+        const min = Math.pow((num - 1) / 2, 2);
+        return `${max}-${min}`
     }
 
     private overTheRoad(address: number, n: number) {
