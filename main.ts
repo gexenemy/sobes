@@ -1,23 +1,100 @@
+// import {finalize, interval, of, switchMap, tap} from "rxjs";
+
 export class Main {
     constructor() {
-        // this.solution("apples !applesauce plums % and bananas\npears oranges !applesauce", ["%", "!"])
-        // 1   1
-        // 2   2
-        // 4   6 / 3 = 2 ... -2
-        // 8   20 / 4 = 5 ... -3
-        // 16   70 / 5 = 14 ... -2
-        // 32   252 / 6 = 42
-        // 64   924 / 7 = 132
-        // 128   3432 / 8 = 429
-        console.log(this.sumPairs([1, 4, 8, 7, 3, 15], 8))
-        console.log(this.sumPairs([1, -2, 3, 0, -6, 1], -6))
-        console.log(this.sumPairs([20, -13, 40], -7))
-        console.log(this.sumPairs([1, 2, 3, 4, 1, 0], 2))
-        console.log(this.sumPairs([10, 5, 2, 3, 7, 5], 10))
-        console.log(this.sumPairs([4, -2, 3, 3, 4], 8))
-        console.log(this.sumPairs([0, 2, 0], 0))
-        console.log(this.sumPairs([5, 9, 13, -3], 10))
+        // this.pigIt('Pig latin is cool')
+        console.log(this.add('1', '1'))
+        console.log(this.add('123', '456'))
+        console.log(this.add('888', '222'))
+        console.log(this.add('1372', '69'))
+        console.log(this.add('12', '456'))
+        console.log(this.add('101', '100'))
+        console.log(this.add('123', '321'))
+        console.log(this.add('11', '99'))
+        console.log(this.add('63829983432984289347293874', '90938498237058927340892374089'))
+        // console.log(this.pigIt('Hello world !'))
+    }
 
+    private add(a, b) {
+        return (Number(a) < Number.MAX_SAFE_INTEGER && Number(b) < Number.MAX_SAFE_INTEGER ? Number(a) + Number(b) : BigInt(a) + BigInt(b)).toString();
+    }
+
+    private pigIt(str){
+        // pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+        // pigIt('Hello world !');     // elloHay orldway !
+        const splitWords = str.split(' ');
+        const modifiedWords = splitWords.map((word) => /\w/.test(word) ? `${word.slice(1)}${word.charAt(0)}ay` : word);
+        return modifiedWords.join(' ');
+
+        // лучшее решение кодварс:
+        // return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+    }
+
+    private capitalizeWord(word) {
+        return `${word[0].toUpperCase()}${word.slice(1)}`;
+    }
+
+    private derive(coefficient,exponent) {
+        // derive(7, 8) --> this should output "56x^7"
+        // derive(5, 9) --> this should output "45x^8"
+        return `${coefficient * exponent}x^${exponent - 1}`
+    }
+
+    private stringy(size) {
+        console.log(Array(size).join('1'))
+    }
+
+    private stringClean(s){
+        console.log(s.replace(/(\d)/g, ''))
+    }
+
+    private RomanNumerals(){
+        const a = "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
+
+        const romanNumerals = {
+            matrix: {
+                'I': 1,
+                'V': 5,
+                'X': 10,
+                'L': 50,
+                'C': 100,
+                'D': 500,
+                'M': 1000
+            },
+            toRoman: (num) => {
+                console.log(romanNumerals.matrix);
+            }
+        }
+
+        romanNumerals.toRoman(1000);
+    }
+
+    private removeConsecutiveDuplicates(){
+        const a = "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
+        console.log(a.split(' ').reduce((t,c,i,a) => {
+            if (c !== a[i - 1]) {
+                t += ` ${c}`;
+            }
+            return t;
+        }, '').trim())
+    }
+
+    private calc2() {
+        const one = function (op?: any) {
+            console.log(...arguments)
+            return arguments.length === 0 ? 1 : arguments[0](1);
+        }
+        const two = function (op?: any) {
+            console.log(...arguments)
+            return arguments.length === 0 ? 2 : arguments[0](2);
+        }
+
+        const plus = function (op?: any) {
+            console.log(...arguments)
+            const n = arguments[0];
+            return (x: number) => x + n;
+        }
+        console.log(one(plus(two())))
     }
 
     private sumPairs(ints: number[], s: number) {
@@ -100,24 +177,6 @@ export class Main {
             }
             return t
         }, []))
-    }
-
-    private calc2() {
-        const one = function (op?: any) {
-            console.log(...arguments)
-            return arguments.length === 0 ? 1 : arguments[0](1);
-        }
-        const two = function (op?: any) {
-            console.log(...arguments)
-            return arguments.length === 0 ? 2 : arguments[0](2);
-        }
-
-        const plus = function (op?: any) {
-            console.log(...arguments)
-            const n = arguments[0];
-            return (x: number) => x + n;
-        }
-        console.log(one(plus(two())))
     }
 
     private calc() {

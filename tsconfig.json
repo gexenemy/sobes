@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "./",
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "module": "es6",
         "target": "es2019",
         "allowJs": true,
