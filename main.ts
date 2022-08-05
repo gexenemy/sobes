@@ -3,16 +3,32 @@
 export class Main {
     constructor() {
         // this.pigIt('Pig latin is cool')
-        console.log(this.add('1', '1'))
-        console.log(this.add('123', '456'))
-        console.log(this.add('888', '222'))
-        console.log(this.add('1372', '69'))
-        console.log(this.add('12', '456'))
-        console.log(this.add('101', '100'))
-        console.log(this.add('123', '321'))
-        console.log(this.add('11', '99'))
-        console.log(this.add('63829983432984289347293874', '90938498237058927340892374089'))
+        this.domainName('http://google.com')
+        // this.fakeBin('12334567777890')
         // console.log(this.pigIt('Hello world !'))
+    }
+
+    private domainName(url){
+        // assert.equal(domainName("http://google.com"), "google");
+        // assert.equal(domainName("http://google.co.jp"), "google");
+        // assert.equal(domainName("www.xakep.ru"), "xakep");
+        // assert.equal(domainName("https://youtube.com"), "youtube");
+        // assert.equal(domainName("http://github.com/carbonfive/raygun"), "github");
+        // assert.equal(domainName("http://www.zombie-bites.com"), "zombie-bites");
+        // assert.equal(domainName("https://www.cnet.com"), "cnet");
+        console.log(url.replace(/(\w)(\w*)(\s|$)/g, (d) =>  d < 5 ? 0 : 1))
+        //your code here
+    }
+
+    private fakeBin(x){
+        // assert.strictEqual(fakeBin('45385593107843568'), '01011110001100111');
+        // assert.strictEqual(fakeBin('509321967506747'), '101000111101101');
+        // assert.strictEqual(fakeBin('366058562030849490134388085'), '011011110000101010000011011');
+        return x.replace(/(\d)/g, (d) =>  d < 5 ? 0 : 1);
+    }
+
+    private solution1(str: string){
+        return str.split('').reverse().join('');
     }
 
     private add(a, b) {
